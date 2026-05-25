@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAuthn 2FA Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+    <header>
+        <div class="logo">&#128272;</div>
+        <h1>2FA Demo</h1>
+        <p>Password + fingerprint authentication</p>
+    </header>
+
+    <nav class="tabs">
+        <button class="tab active" data-tab="login">Sign in</button>
+        <button class="tab" data-tab="register">Register</button>
+    </nav>
+
+    <!-- Login panel -->
+    <section id="login" class="panel active">
+        <form id="login-form" novalidate>
+            <label>
+                Username
+                <input id="login-username" type="text" autocomplete="username" required placeholder="alice">
+            </label>
+            <label>
+                Password <span class="factor">factor 1</span>
+                <input id="login-password" type="password" autocomplete="current-password" required placeholder="••••••••">
+            </label>
+            <button type="submit" class="btn">Sign in</button>
+        </form>
+    </section>
+
+    <!-- Register panel -->
+    <section id="register" class="panel">
+        <form id="register-form" novalidate>
+            <label>
+                Username
+                <input id="reg-username" type="text" autocomplete="username" required placeholder="alice">
+            </label>
+            <label>
+                Password <span class="factor">factor 1</span>
+                <input id="reg-password" type="password" autocomplete="new-password" required placeholder="••••••••">
+            </label>
+            <button type="submit" class="btn">Register + enroll fingerprint</button>
+        </form>
+    </section>
+
+    <!-- Status / result -->
+    <div id="status" class="status hidden">
+        <div class="spinner"></div>
+        <span id="status-text"></span>
+    </div>
+
+    <div id="result" class="result hidden">
+        <span id="result-icon"></span>
+        <span id="result-text"></span>
+    </div>
+
+    <footer>
+        <p>Runs on <code>localhost</code> only &mdash; data is in-memory and resets on restart.</p>
+    </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
